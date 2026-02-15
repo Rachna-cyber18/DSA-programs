@@ -1,0 +1,29 @@
+// Decimal to Binary conversion
+
+#include<stdio.h>
+int main(){
+    int num, bin=0;      // variable declaration (num - decimal no. , bin=0 - binary result  , 0 bcz build digit by digit)
+
+    printf("Enter Number: ");   // asks user for a number
+
+    scanf("%d", &num);     // reads the number and stores it
+
+    int temp = num;    // temp used so num remains unchanged
+
+    int place = 1;      // helps to place binary digits correctly
+
+    while(temp != 0){      // loop runs until temp becomes 0
+
+        int rem = temp % 2;     // %2 gives remainder 1 or 0
+
+        bin = bin + rem * place;       // places the remainder at correct position
+
+        temp = temp / 2;      // moves to the next step of conversion
+
+        place = place * 10;      // shifts binary to the left
+    }
+    printf("Binary of %d is %d", num, bin);     // prints result
+    
+    return 0;
+    
+}
