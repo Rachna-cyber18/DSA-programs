@@ -1,0 +1,49 @@
+// Binary to Hexadecimal conversion
+
+#include<stdio.h>
+#include<string.h>
+int convertBinaryToDecimal(int binNum){
+    int decNum=0, base = 1;
+    while(binNum != 0){
+        int rem = binNum % 10;
+        decNum += rem * base;
+        base = 2 * base;
+        binNum = binNum / 10;
+    }
+    return decNum;
+}
+char*convertDecimalToHexa(int decNum){
+    char*hexa = (char*)calloc(100, sizeof(char));
+    while(decNum != 0){
+        int rem = decNum % 16;
+        char str[2];
+        if (rem >= 0 && rem <= 9)
+            sprintf("str", "%d", rem);
+        else if(rem == 10)
+            str[0] = 'A';
+        else if(rem == 11)
+            str[0] = 'B';
+        else if(rem == 12)
+            str[0] = 'C';
+        else if(rem == 13)
+            str[0] = 'D';
+        else if(rem == 14)
+            str[0] = 'E';
+        else
+            str[0]= 'F';
+        str[1] = '\0';
+        strcat(Hexa, str);
+        decNum = decNum / 16;
+        }
+        strrev(Hexa);
+        return Hexa;
+    }
+    int main(){
+        int num;
+        printf("Enter Binary Number: ");
+        scanf("%d", &num);
+        int dec = convertBinaryToDecimal(num);
+        char*Hexa = convertDecimalToHexa(dec);
+        printf("Hexa of %d is %d", num, Hexa);
+        return 0;
+    }
